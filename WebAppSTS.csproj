@@ -167,8 +167,16 @@
     <Content Include="Account\TwoFactorAuthenticationSignIn.aspx" />
     <Content Include="Account\VerifyPhoneNumber.aspx" />
     <Content Include="App_Data\BDsts.mdf" />
+    <Content Include="App_Data\BDsts2.mdf" />
+    <Content Include="App_Data\BDsts2_log.ldf">
+      <DependentUpon>BDsts2.mdf</DependentUpon>
+    </Content>
     <Content Include="App_Data\BDsts_log.ldf">
       <DependentUpon>BDsts.mdf</DependentUpon>
+    </Content>
+    <Content Include="App_Data\login.mdf" />
+    <Content Include="App_Data\login_log.ldf">
+      <DependentUpon>login.mdf</DependentUpon>
     </Content>
     <Content Include="Contact.aspx" />
     <Content Include="Content\bootstrap-theme.css" />

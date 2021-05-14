@@ -111,7 +111,7 @@ F:\Git\WebAppSTS\bin\ru\Microsoft.Owin.Security.Google.resources.dll
 F:\Git\WebAppSTS\bin\ru\Microsoft.Owin.Security.Twitter.resources.dll
 F:\Git\WebAppSTS\bin\ru\Microsoft.Owin.Security.MicrosoftAccount.resources.dll
 F:\Git\WebAppSTS\obj\Debug\WebAppSTS.csprojAssemblyReference.cache
-F:\Git\WebAppSTS\obj\Debug\WebAppSTS.csproj.CoreCompileInputs.cache
 F:\Git\WebAppSTS\obj\Debug\WebAppSTS.csproj.CopyComplete
 F:\Git\WebAppSTS\obj\Debug\WebAppSTS.dll
 F:\Git\WebAppSTS\obj\Debug\WebAppSTS.pdb
+F:\Git\WebAppSTS\obj\Debug\WebAppSTS.csproj.CoreCompileInputs.cache
