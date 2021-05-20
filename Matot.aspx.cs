@@ -37,8 +37,8 @@ namespace WebAppSTS
             if (reader.HasRows)
             {
                 // выводим названия столбцов
-                //         Label3.Text=reader.GetName(0)+ "\t"; Label3.Text+= reader.GetName(1)+"\t";
-                //            Label3.Text+= reader.GetName(2) + "\n";
+                Label2.Text = reader.GetName(0) + "\t"; Label2.Text += reader.GetName(1) + "\t";
+                Label2.Text += reader.GetName(2) + "\n"; Label2.Text += reader.GetName(3) + "\n";
 
                 int iCount = 0;
                 int iWait = 0;
@@ -570,6 +570,13 @@ namespace WebAppSTS
                 AddName.Visible = false;
                 AddQt.Visible = false;
             }
+
+
+
+
+
+
+
         }
 
         protected void ButtonDelMat_Click(object sender, EventArgs e)
@@ -589,5 +596,54 @@ namespace WebAppSTS
                 DelQt.Visible = false;
             }
         }
-    }
+
+        protected void ButtonAddMat2_Click(object sender, EventArgs e)
+        {
+
+           //SqlCommand matList = new SqlCommand($"INSERT INTO MATOT(Material, Quantity, Cost) values ('name',12, 22)", sqlConnection);
+           // int reader = matList.ExecuteNonQuery();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            string matName = AddName.Text;
+            string matQt = AddQt.Text;
+            string matCost = AddCost.Text;
+            string sqlExpression = $"INSERT INTO [MATOT] (Material, Quantity, Cost) values (N'{matName}',{matQt},{matCost})";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                // добавление
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                int number = command.ExecuteNonQuery();
+                if (number > 0) Label2.Text = $"Материал {AddName.Text} успешно добавлен в матотчёт";
+
+            }
+
+        }
+            protected void ButtonDelMat2_Click(object sender, EventArgs e)
+            {
+            //SqlCommand matList = new SqlCommand($"INSERT INTO MATOT(Material, Quantity, Cost) values ('name',12, 22)", sqlConnection);
+            // int reader = matList.ExecuteNonQuery();
+
+            string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+            string matQt = DelQt.Text;
+            string idMat = DelId.Text;
+            string matCost = AddCost.Text;
+            string sqlExpression = $"SELECT(Quantity) FROM [MATOT] WHERE IdMat = '{idMat}'";
+
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                // добавление
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+               // int number = command.ExecuteNonQuery();
+               // if (number > 0) Label2.Text = $"Материал {DelName.Text} успешно удалён из матотчёта";
+                SqlDataReader reader = command.ExecuteReader();
+
+                reader.Read();
+                if (reader.HasRows) Label2.Text = reader.GetValue(0);
+
+            }
+        }
+        } 
 }

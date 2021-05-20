@@ -17,17 +17,17 @@
 
 
         &nbsp;&nbsp;&nbsp; 
-            <asp:TextBox ID="AddName" runat="server" Visible="False">Наименование</asp:TextBox>
+            <asp:TextBox ID="AddName" runat="server" Visible="False"></asp:TextBox>
 
 
-            <asp:TextBox ID="AddQt" runat="server" Visible="False" Width="125px">Количество</asp:TextBox>
+            <asp:TextBox ID="AddQt" runat="server" Visible="False" Width="125px"></asp:TextBox>
 
 
-            <asp:TextBox ID="AddCost" runat="server" Visible="False" Width="64px">Цена</asp:TextBox>
+            <asp:TextBox ID="AddCost" runat="server" Visible="False" Width="64px"></asp:TextBox>
 
 
         &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="ButtonAddMat2" runat="server" OnClick="Button1_Click" Text="Добавить" Visible="False" Width="130px" />
+        <asp:Button ID="ButtonAddMat2" runat="server" OnClick="ButtonAddMat2_Click" Text="Добавить" Visible="False" Width="130px" />
 
 
         </p>
@@ -46,7 +46,7 @@
 
 
         &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="ButtonDelMat2" runat="server" OnClick="Button1_Click" Text="Удалить" Visible="False" Width="130px" />
+        <asp:Button ID="ButtonDelMat2" runat="server" OnClick="ButtonDelMat2_Click" Text="Удалить" Visible="False" Width="130px" />
 
 
         </p>
