@@ -42,7 +42,7 @@
                 Добавление и изменение объектов, расход материалов, выполнение работ.
             </p>
             <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Далее &raquo;</a>
+                <a class="btn btn-default" href="/Object.aspx">Далее &raquo;</a>
             </p>
         </div>
         <div class="col-md-4">

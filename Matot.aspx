@@ -17,13 +17,13 @@
 
 
         &nbsp;&nbsp;&nbsp; 
-            <asp:TextBox ID="AddName" runat="server" Visible="False"></asp:TextBox>
+            <asp:TextBox ID="AddName" runat="server" Visible="False" ForeColor="Black" ToolTip="Наименование материала"></asp:TextBox>
 
 
-            <asp:TextBox ID="AddQt" runat="server" Visible="False" Width="125px"></asp:TextBox>
+            <asp:TextBox ID="AddQt" runat="server" Visible="False" Width="125px" ForeColor="Black" ToolTip="Количество"></asp:TextBox>
 
 
-            <asp:TextBox ID="AddCost" runat="server" Visible="False" Width="64px"></asp:TextBox>
+            <asp:TextBox ID="AddCost" runat="server" Visible="False" Width="64px" ForeColor="Black" ToolTip="Стоймость материала"></asp:TextBox>
 
 
         &nbsp;&nbsp;&nbsp;
@@ -32,21 +32,23 @@
 
         </p>
         <p class="lead"> 
-            <asp:Button ID="ButtonDelMat" runat="server" Text="Убрать материалы из отчёта" Width="370px" OnClick="ButtonDelMat_Click" />
+            <asp:Button ID="ButtonDelMat" runat="server" Text="Изменить количество" Width="370px" OnClick="ButtonDelMat_Click" />
 
 
         &nbsp;&nbsp;&nbsp; 
-            <asp:TextBox ID="DelName" runat="server" Visible="False">Наименование</asp:TextBox>
+            
+
+            <asp:TextBox ID="DelQt" runat="server" Visible="False" Width="125px" ForeColor="Black" ToolTip="Количество" ViewStateMode="Enabled"></asp:TextBox>
 
 
-            <asp:TextBox ID="DelQt" runat="server" Visible="False" Width="125px">Количество</asp:TextBox>
+            &nbsp;&nbsp;
 
 
-            <asp:TextBox ID="DelId" runat="server" Visible="False" Width="64px">ID</asp:TextBox>
+            <asp:TextBox ID="DelId" runat="server" Visible="False" Width="64px" ForeColor="Black" ToolTip="ID Матиериала"></asp:TextBox>
 
 
-        &nbsp;&nbsp;&nbsp;
-        <asp:Button ID="ButtonDelMat2" runat="server" OnClick="ButtonDelMat2_Click" Text="Удалить" Visible="False" Width="130px" />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <asp:Button ID="ButtonDelMat2" runat="server" OnClick="ButtonDelMat2_Click" Text="Изменить" Visible="False" Width="130px" />
 
 
         </p>
@@ -58,7 +60,7 @@
         <p class="lead"> 
             &nbsp;</p>
        <%//  <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>%>
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Button" Visible="False" />
     </div>
     <div class="row">
         <asp:Button ID="ButtonBack" runat="server" OnClick="ButtonBack_Click" Text="Назад" Visible="False" />

@@ -16,16 +16,16 @@ namespace WebAppSTS
     {
         private SqlConnection sqlConnection = null;
 
-        protected async void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
-            // if (Context.User.Identity.IsAuthenticated == false)
-            //  {
-            //      Response.Redirect("~/Account/login"); //Если пользователь не выполнил в
-            //  }
+             if (Context.User.Identity.IsAuthenticated == false)
+              {
+                  Response.Redirect("~/Account/login"); //Если пользователь не выполнил в
+              }
 
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             sqlConnection = new SqlConnection(connectionString);
-            await sqlConnection.OpenAsync();
+            //await sqlConnection.OpenAsync();
 
         }
 
@@ -157,6 +157,7 @@ namespace WebAppSTS
 
         protected async void ButtonNext_Click(object sender, EventArgs e)
         {
+            await sqlConnection.OpenAsync();
             ButtonBack.Visible = true;
             ButtonNext.Visible = false;
 
@@ -302,6 +303,7 @@ namespace WebAppSTS
 
         protected async void ButtonBack_Click(object sender, EventArgs e)
         {
+            await sqlConnection.OpenAsync();
             SqlCommand matList = new SqlCommand("SELECT * FROM [MATOT]", sqlConnection);
             SqlDataReader reader = await matList.ExecuteReaderAsync();
 
@@ -429,6 +431,7 @@ namespace WebAppSTS
 
         protected async void Button4_Click(object sender, EventArgs e) //вывод отчёта на экран
         {
+            await sqlConnection.OpenAsync();
             SqlCommand matList = new SqlCommand("SELECT * FROM [MATOT]", sqlConnection);
             SqlDataReader reader = await matList.ExecuteReaderAsync();
 
@@ -457,7 +460,7 @@ namespace WebAppSTS
 
                               // Console.WriteLine("{0} \t{1} \t{2}", id, name, age);
                     */
-
+                   
                     switch (iCount)
                     {
                         case 1:
@@ -552,7 +555,7 @@ namespace WebAppSTS
             }
         }
 
-        protected async void ButtonAddMat_Click(object sender, EventArgs e)
+        protected void ButtonAddMat_Click(object sender, EventArgs e)
         {
             //SqlCommand matList = new SqlCommand("INSERT INTO [MATOT] values * FROM [MATOT]", sqlConnection);
             // SqlDataReader reader = await matList.ExecuteReaderAsync();
@@ -585,14 +588,14 @@ namespace WebAppSTS
             {
                 ButtonDelMat2.Visible = true;
                 DelId.Visible = true;
-                DelName.Visible = true;
+                //DelName.Visible = true;
                 DelQt.Visible = true;
             }
             else
             {
                 ButtonDelMat2.Visible = false;
                 DelId.Visible = false;
-                DelName.Visible = false;
+               // DelName.Visible = false;
                 DelQt.Visible = false;
             }
         }
@@ -630,7 +633,41 @@ namespace WebAppSTS
             string idMat = DelId.Text;
             string matCost = AddCost.Text;
             string sqlExpression = $"SELECT(Quantity) FROM [MATOT] WHERE IdMat = '{idMat}'";
+            string sqlUpdate = $"UPDATE MATOT SET Quantity = {matQt} WHERE IdMat = '{idMat}'";
+            string sqlDelete = $"DELETE FROM MATOT WHERE IdMat = {idMat}";
 
+
+            if (matQt == "0")
+            {
+                //Label2.Text = "Вы указали количество = 0";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    // удаление
+                    SqlCommand command = new SqlCommand(sqlDelete, connection);
+                    int number = command.ExecuteNonQuery();
+                    if (number > 0) Label2.Text = $"Материал с ID {idMat} успешно удалён из матотчёта";
+
+                    //    reader.Read();
+                    //    if (reader.HasRows) Label2.Text = reader.GetValue(0);
+                }
+            }
+            else
+            {
+                Label2.Text = "Количество > 0";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    // изменение
+                    SqlCommand command = new SqlCommand(sqlUpdate, connection);
+                    int number = command.ExecuteNonQuery();
+                    if (number > 0) Label2.Text = $"Материал c ID {idMat} успешно изменён";
+
+                    //    reader.Read();
+                    //    if (reader.HasRows) Label2.Text = reader.GetValue(0);
+                }
+
+            }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -640,10 +677,23 @@ namespace WebAppSTS
                // if (number > 0) Label2.Text = $"Материал {DelName.Text} успешно удалён из матотчёта";
                 SqlDataReader reader = command.ExecuteReader();
 
-                reader.Read();
-                if (reader.HasRows) Label2.Text = reader.GetValue(0);
+            //    reader.Read();
+            //    if (reader.HasRows) Label2.Text = reader.GetValue(0);
 
             }
+
+
+
+
+
         }
-        } 
+
+        private void DelQt_Click(object sender, EventArgs e)
+        {
+            DelQt.Text = "";
+        }
+        
+
+
+    } 
 }
