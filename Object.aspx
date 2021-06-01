@@ -25,14 +25,24 @@
             <asp:Button ID="AddObject" runat="server" Text="Добавить новый объект" Width="370px" OnClick="AddObject_Click"/>
 
 
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   <asp:Label ID="LabelId" runat="server" ForeColor="Black" Visible="False">ID Объекта</asp:Label>
+
+
         </p>
         <p class="lead"> 
 
 
-            <asp:Button ID="DelWorkers" runat="server" Text="Удалить рабочую группу" Width="370px"/>
+            <asp:Button ID="DelWorkers" runat="server" Text="Удалить рабочую группу" Width="370px" OnClick="DelWorkers_Click"/>
 
 
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="DelObject" runat="server" Text="Изменить объект" Width="370px"/>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Button ID="DelObject" runat="server" Text="Изменить объект" Width="370px" OnClick="DelObject_Click"/>
+
+
+        &nbsp;&nbsp;&nbsp; 
+            <asp:TextBox ID="TextBox7" runat="server" ForeColor="Black" Width="140px" Visible="False"></asp:TextBox>
+
+
+        <asp:Button ID="findButton" runat="server" Text="Найти" Width="70px" Visible="False" OnClick="findButton_Click" />
 
 
         </p>
@@ -89,7 +99,7 @@
             <asp:TextBox ID="TextBox6" runat="server" Width="140px" ForeColor="Black" ViewStateMode="Enabled" Visible="False"></asp:TextBox>
 
 
-        <asp:Button ID="ButtonAdd" runat="server" Text="Добавить" Width="130px" Visible="False" />
+        <asp:Button ID="ButtonAdd" runat="server" Text="Добавить" Width="130px" Visible="False" OnClick="ButtonAdd_Click" />
 
 
         </p>
@@ -129,5 +139,5 @@
 </tr>
             </table>
     </div>
-    <td><asp:Label ID="Label1" runat="server" ForeColor="Black"></asp:Label></td>
+    <td><asp:Label ID="Label1" runat="server" ForeColor="Black" Visible="False"></asp:Label></td>
 </asp:Content>

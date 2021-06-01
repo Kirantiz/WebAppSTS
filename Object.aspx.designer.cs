@@ -42,6 +42,15 @@ namespace WebAppSTS
         protected global::System.Web.UI.WebControls.Button AddObject;
 
         /// <summary>
+        /// LabelId элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LabelId;
+
+        /// <summary>
         /// DelWorkers элемент управления.
         /// </summary>
         /// <remarks>
@@ -58,6 +67,24 @@ namespace WebAppSTS
         /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button DelObject;
+
+        /// <summary>
+        /// TextBox7 элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox TextBox7;
+
+        /// <summary>
+        /// findButton элемент управления.
+        /// </summary>
+        /// <remarks>
+        /// Автоматически создаваемое поле.
+        /// Для изменения переместите объявление поля из файла конструктора в файл кода программной части.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button findButton;
 
         /// <summary>
         /// DelWorkers0 элемент управления.

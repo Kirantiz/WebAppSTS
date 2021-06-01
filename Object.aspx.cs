@@ -9,8 +9,14 @@ using System.Web.UI.WebControls;
 
 namespace WebAppSTS
 {
+
+
+
+
     public partial class Object : System.Web.UI.Page
     {
+
+
         private SqlConnection sqlConnection = null;
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,13 +36,16 @@ namespace WebAppSTS
             TextBox4.Visible = false;
             TextBox5.Visible = false;
             TextBox6.Visible = false;
+            TextBox7.Visible = false;
             LabelText1.Visible = false;
             LabelText2.Visible = false;
             LabelText3.Visible = false;
             LabelText4.Visible = false;
             LabelText5.Visible = false;
             LabelText6.Visible = false;
+            LabelId.Visible = false;
             ButtonAdd.Visible = false;
+            findButton.Visible = false;
            // Label3.Text = "проверка таблицы";
          //   Label4.Text = "таблица";
 
@@ -55,6 +64,8 @@ namespace WebAppSTS
 
         protected void AddWorkers_Click(object sender, EventArgs e)
         {
+            ButtonAdd.Text = "Добавить";
+            Label1.Text = "1";
             TextBox1.Visible = true;
             TextBox2.Visible = true;
             TextBox3.Visible = true;
@@ -71,10 +82,20 @@ namespace WebAppSTS
             LabelText3.Text = "Разряд";
             LabelText4.Text = "Телефон";
             LabelText5.Text = "Отпуск";
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+
+
+
         }
 
         protected void AddObject_Click(object sender, EventArgs e)
         {
+            ButtonAdd.Text = "Добавить";
+            Label1.Text = "2";
             TextBox1.Visible = true;
             TextBox2.Visible = true;
             TextBox3.Visible = true;
@@ -94,6 +115,14 @@ namespace WebAppSTS
             LabelText4.Text = "Начало работ";
             LabelText5.Text = "Адрес";
             LabelText6.Text = "Статус";
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+
+ 
         }
 
         protected async void DelWorkers0_Click(object sender, EventArgs e) // Список прорабов
@@ -400,6 +429,250 @@ namespace WebAppSTS
                 }
             }
 
+
+        }
+
+        protected void ButtonAdd_Click(object sender, EventArgs e)
+        {
+
+
+
+            
+            if (Label1.Text == "1")
+            {
+                string foreman = TextBox1.Text;
+                string qtWorkers = TextBox2.Text;
+                string razr = TextBox3.Text;
+                string tel = TextBox4.Text;
+                string vacation = TextBox5.Text;
+                //SqlCommand matList = new SqlCommand($"INSERT INTO MATOT(Material, Quantity, Cost) values ('name',12, 22)", sqlConnection);
+                // int reader = matList.ExecuteNonQuery();
+
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+                string sqlExpression = $"INSERT INTO [Workers] (Foreman, qtWorkers, razr, Tel, Vacation) values (N'{foreman}',{qtWorkers},{razr},'{tel}',N'{vacation}')";
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    // добавление
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    int number = command.ExecuteNonQuery();
+                    if (number > 0) Label2.Text = $"Рабочая группа прораба {TextBox1.Text} успешно добавлена";
+
+                }
+            }
+            
+
+            if(Label1.Text == "2")
+            {
+                
+                string objName = TextBox1.Text;
+                string client = TextBox2.Text;
+                string foreman = TextBox3.Text;
+                string dateBegin = TextBox4.Text;
+                string location = TextBox5.Text;
+                string status = TextBox6.Text;
+                //SqlCommand matList = new SqlCommand($"INSERT INTO MATOT(Material, Quantity, Cost) values ('name',12, 22)", sqlConnection);
+                // int reader = matList.ExecuteNonQuery();
+
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+                string sqlExpression = $"INSERT INTO [object] (ObjName, Client, Foreman, DateBegin, [Location], [Status])" +
+                    $" values (N'{objName}', N'{client}', N'{foreman}', '{dateBegin}', N'{location}', N'{status}');";
+
+               
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                {
+                    connection.Open();
+                    // добавление
+                    SqlCommand command = new SqlCommand(sqlExpression, connection);
+                    int number = command.ExecuteNonQuery();
+                    if (number > 0) Label2.Text = $"Объект {TextBox1.Text} успешно добавлен";
+
+                }
+
+               
+            }
+
+
+
+            if(Label1.Text == "3") //Удаление Workers
+            {
+
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+                string foreman = TextBox1.Text;
+                
+                string sqlDelete = $"DELETE FROM Workers WHERE Foreman = N'{foreman}'";
+
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        // удаление
+                        SqlCommand command = new SqlCommand(sqlDelete, connection);
+                        int number = command.ExecuteNonQuery();
+                        if (number > 0) Label2.Text = $"Рабочая группа {foreman} успешно удалёна";
+
+
+                    }
+                
+
+                
+            }
+
+
+            if(Label1.Text == "4") //удаление/Изменение Object
+            {
+
+                string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
+
+                string objName = TextBox1.Text;
+                string client = TextBox2.Text;
+                string foreman = TextBox3.Text;
+                string dateBegin = TextBox4.Text;
+                string location = TextBox5.Text;
+                string status = TextBox6.Text;
+                string idObject = TextBox7.Text;
+
+                //string sqlExpression = $"SELECT(Quantity) FROM [MATOT] WHERE IdMat = '{idMat}'";
+                string sqlUpdate = $"UPDATE [object] SET ObjName = N'{objName}', Client = N'{client}', Foreman = N'{foreman}', DateBegin = '{dateBegin}', Location = N'{location}', Status = N'{status}' WHERE IdObj = '{idObject}'";
+                string sqlDelete = $"DELETE FROM [object] WHERE IdObj = {idObject}";
+
+
+                if (objName == ""||objName == " ")
+                {
+                    //Label2.Text = "Вы указали количество = 0";
+                    using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        // удаление
+                        SqlCommand command = new SqlCommand(sqlDelete, connection);
+                        int number = command.ExecuteNonQuery();
+                        if (number > 0) Label2.Text = $"Объект с ID {idObject} успешно удалён";
+                    }
+                }
+                else
+                {
+                using (SqlConnection connection = new SqlConnection(connectionString))
+                    {
+                        connection.Open();
+                        // изменение
+                        SqlCommand command = new SqlCommand(sqlUpdate, connection);
+                        int number = command.ExecuteNonQuery();
+                        if (number > 0) Label2.Text = $"Объект c ID {idObject} успешно изменён";
+                    }
+
+                }
+
+
+            }
+
+
+        }
+
+        protected void DelWorkers_Click(object sender, EventArgs e)
+        {
+            Label1.Text = "3";
+            TextBox1.Visible = true;
+
+            LabelText1.Visible = true;
+
+            ButtonAdd.Visible = true;
+            ButtonAdd.Text = "Удалить";
+
+            LabelText1.Text = "Прораб";
+
+            TextBox1.Text = "";
+
+
+
+        }
+
+        protected void DelObject_Click(object sender, EventArgs e)
+        {
+            ButtonAdd.Text = "Изменить";
+            Label1.Text = "4";
+            TextBox1.Visible = true;
+            TextBox2.Visible = true;
+            TextBox3.Visible = true;
+            TextBox4.Visible = true;
+            TextBox5.Visible = true;
+            TextBox6.Visible = true;
+            TextBox7.Visible = true;
+            LabelText1.Visible = true;
+            LabelText2.Visible = true;
+            LabelText3.Visible = true;
+            LabelText4.Visible = true;
+            LabelText5.Visible = true;
+            LabelText6.Visible = true;
+            ButtonAdd.Visible = true;
+            LabelText1.Text = "Объект";
+            LabelText2.Text = "Заказчик";
+            LabelText3.Text = "Прораб";
+            LabelText4.Text = "Начало работ";
+            LabelText5.Text = "Адрес";
+            LabelText6.Text = "Статус";
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+            TextBox4.Text = "";
+            TextBox5.Text = "";
+            TextBox6.Text = "";
+            TextBox7.Text = "";
+            LabelId.Visible = true;
+            findButton.Visible = true;
+        }
+
+        protected async void findButton_Click(object sender, EventArgs e)
+        {
+            ButtonAdd.Text = "Изменить";
+            Label1.Text = "4";
+            TextBox1.Visible = true;
+            TextBox2.Visible = true;
+            TextBox3.Visible = true;
+            TextBox4.Visible = true;
+            TextBox5.Visible = true;
+            TextBox6.Visible = true;
+            TextBox7.Visible = true;
+            LabelText1.Visible = true;
+            LabelText2.Visible = true;
+            LabelText3.Visible = true;
+            LabelText4.Visible = true;
+            LabelText5.Visible = true;
+            LabelText6.Visible = true;
+            ButtonAdd.Visible = true;
+            LabelText1.Text = "Объект";
+            LabelText2.Text = "Заказчик";
+            LabelText3.Text = "Прораб";
+            LabelText4.Text = "Начало работ";
+            LabelText5.Text = "Адрес";
+            LabelText6.Text = "Статус";
+
+            LabelId.Visible = true;
+            findButton.Visible = true;
+
+            string idObject = TextBox7.Text;
+            await sqlConnection.OpenAsync();
+
+            SqlCommand matList = new SqlCommand($"SELECT * FROM [Object] WHERE [IdObj] = {TextBox7.Text+""} ", sqlConnection);
+            SqlDataReader reader = await matList.ExecuteReaderAsync();
+            await reader.ReadAsync();
+            if (reader.HasRows)
+            {
+                // выводим названия столбцов
+                //         Label3.Text=reader.GetName(0)+ "\t"; Label3.Text+= reader.GetName(1)+"\t";
+                //            Label3.Text+= reader.GetName(2) + "\n";
+
+
+                TextBox1.Text = reader.GetValue(1) + "";
+                TextBox2.Text = reader.GetValue(2) + "";
+                TextBox3.Text = reader.GetValue(3) + "";
+                TextBox4.Text = reader.GetValue(4) + "";
+                TextBox5.Text = reader.GetValue(5) + "";
+                TextBox6.Text = reader.GetValue(6) + "";
+
+            }
+            else Label2.Text = "Объект с таким ID не обнаружен";
 
         }
     }

@@ -1,16 +1,5 @@
-﻿SELECT * FROM Workers;
-SELECT * FROM MATOT;
-SELECT * FROM [object];
-SELECT * FROM USEMAT;
+﻿INSERT INTO [object] (ObjName, Client, Foreman, DateBegin, [Location], [Status]) values 
+('Объект','Клиент',N'Сыч', '11.11.2011','адрес','Статус');
 
-ALTER TABLE [object]									
-ADD CONSTRAINT FOREMAN_OBJECT_FK					
-foreign key (FOREMAN) REFERENCES Workers(FOREMAN);
 
-ALTER TABLE [USEMAT]									
-ADD CONSTRAINT USEMAT_OBJECT_FK					
-foreign key (IDOBJ) REFERENCES [object](IDOBJ);
-
-ALTER TABLE [USEMAT]									
-ADD CONSTRAINT USEMAT_MATOT_FK					
-foreign key (IDMAT) REFERENCES MATOT(IDMAT);
+SELECT * FROM [Object] WHERE IdObj = 1002
