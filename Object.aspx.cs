@@ -20,10 +20,10 @@ namespace WebAppSTS
         private SqlConnection sqlConnection = null;
         protected void Page_Load(object sender, EventArgs e)
         {
-            // if (Context.User.Identity.IsAuthenticated == false)
-            //  {
-            //      Response.Redirect("~/Account/login"); //Если пользователь не выполнил в
-            //  }
+             if (Context.User.Identity.IsAuthenticated == false)
+              {
+                  Response.Redirect("~/Account/login"); //Если пользователь не выполнил в
+              }
 
             string connectionString = ConfigurationManager.ConnectionStrings["DBConnection"].ConnectionString;
             sqlConnection = new SqlConnection(connectionString);
@@ -60,6 +60,10 @@ namespace WebAppSTS
             Label10.Text = ""; Label20.Text = ""; Label30.Text = ""; Label40.Text = ""; Label50.Text = ""; Label60.Text = ""; Label70.Text = "";
             Label11.Text = ""; Label21.Text = ""; Label31.Text = ""; Label41.Text = ""; Label51.Text = ""; Label61.Text = ""; Label71.Text = "";
             Label12.Text = ""; Label22.Text = ""; Label32.Text = ""; Label42.Text = ""; Label52.Text = ""; Label62.Text = ""; Label72.Text = "";
+
+
+
+
         }
 
         protected void AddWorkers_Click(object sender, EventArgs e)

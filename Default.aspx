@@ -51,7 +51,7 @@
                 Страница для заказа Смет, актов форм С-2А, С-2Б и Справок формы С-3А.
             </p>
             <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Далее &raquo;</a>
+                <a class="btn btn-default" href="/Smeta">Далее &raquo;</a>
             </p>
         </div>
     </div>
