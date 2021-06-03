@@ -1,0 +1,6 @@
+﻿
+SELECT * FROM [Object] WHERE IdObj = 1002
+
+SELECT [object].ObjName, MATOT.Material, USEMAT.quantity
+FROM MATOT INNER JOIN USEMAT ON MATOT.IdMat = USEMAT. IDMAT INNER JOIN
+ [object] ON USEMAT.IDOBJ = [object].IdObj

@@ -33,7 +33,7 @@
         <p class="lead"> 
 
 
-            <asp:Button ID="DelSmeta" runat="server" Text="Удалить смету" Width="370px" OnClick="DelSmeta_Click"/>
+            <asp:Button ID="DelSmeta" runat="server" Text="Изменить смету" Width="370px" OnClick="DelSmeta_Click"/>
 
 
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 

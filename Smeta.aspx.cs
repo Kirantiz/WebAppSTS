@@ -97,7 +97,13 @@ namespace WebAppSTS
 
         protected async void ListSmeta_Click(object sender, EventArgs e)
         {
-
+            Label01.Visible = true;
+            Label02.Visible = true;
+            Label03.Visible = true;
+            Label04.Visible = true;
+            Label05.Visible = true;
+            Label06.Visible = true;
+            Label07.Visible = true;
             Label01.Text = "ID Сметы";
             Label02.Text = "UserName";
             Label03.Text = "Клиент";
