@@ -1,17 +1,19 @@
-﻿<%@ Page Title="Contact" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="WebAppSTS.Contact" %>
+﻿<%@ Page Title="Контакты и Реквизиты" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Contact.aspx.cs" Inherits="WebAppSTS.Contact" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <h2><%: Title %>.</h2>
-    <h3>Your contact page.</h3>
+    
     <address>
-        One Microsoft Way<br />
-        Redmond, WA 98052-6399<br />
-        <abbr title="Phone">P:</abbr>
-        425.555.0100
+220007, г. Минск, Володько-18,202а <br/>
+р/cч
+№BY71BAPB30122510800170000000 <br/>в
+ОАО «Белагропромбанк»,<br/>
+БИК BAPBBY2X, ЦБУ № 705, г. Минск,<br/>
+ул. Маяковского, 154, УНП 191415143
     </address>
 
     <address>
-        <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-        <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
+        <strong>Главный офис:</strong>   <a href="mailto:2094477@tut.by">2094477@tut.by</a><br />
+        <strong>Инженер-сметчик:</strong> <a href="mailto:kiranti@tut.by">Kiranti@tut.by</a>
     </address>
 </asp:Content>

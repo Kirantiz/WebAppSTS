@@ -331,7 +331,19 @@ namespace WebAppSTS
             Label03.Text = "Количество";
             Label04.Text = "Стоимость";
             await sqlConnection.OpenAsync();
-            SqlCommand matList = new SqlCommand("SELECT * FROM [MATOT]", sqlConnection);
+            string sqlText = "SELECT * FROM [MATOT]";
+            if (Label1.Text == "2")
+            {
+                Label01.Text = "ID Расхода";
+                Label02.Text = "Объект";
+                Label03.Text = "Наименование материала";
+                Label04.Text = "Количество";
+
+                sqlText = "SELECT USEMAT.IDUSE, [object].ObjName, MATOT.Material, USEMAT.quantity " +
+                "FROM MATOT INNER JOIN USEMAT ON MATOT.IdMat = USEMAT.IDMAT " +
+                "INNER JOIN [object] ON USEMAT.IDOBJ = [object].IdObj";
+            }
+            SqlCommand matList = new SqlCommand(sqlText, sqlConnection);
             SqlDataReader reader = await matList.ExecuteReaderAsync();
 
             if (reader.HasRows)
